@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->timestamp('iin');
+            $table->string('iin');
             $table->string('phone_number');
             $table->string('post');
-            $table->string('user_work_place');
+            $table->string('user_work_place')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

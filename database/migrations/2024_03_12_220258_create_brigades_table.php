@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('brigades', function (Blueprint $table) {
             $table->id();
-            $table->string('board_number');
+            $table->integer('board_number');
             $table->string('brigade_tablet_phone_number');
             $table->integer('first_user');
             $table->integer('second_user');

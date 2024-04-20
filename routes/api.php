@@ -20,7 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/brigade/list', [BrigadesController::class, 'listBrigade']);
+Route::get('/brigade/show/{id}', [BrigadesController::class, 'show']);
+Route::post('/add_user', [\App\Http\Controllers\UserController::class, 'addUser']);
+Route::get('/users/list', [\App\Http\Controllers\UserController::class, 'listUsers']);
 Route::post('/add_brigade', [BrigadesController::class, 'addBrigade']);
+Route::get('/edit_brigade/{id}', [BrigadesController::class, 'editBrigade']);
 Route::post('/update_brigade/{id}', [BrigadesController::class, 'updateBrigade']);
 Route::delete('/delete_brigade/{id}', [BrigadesController::class, 'deleteBrigade']);
 Route::get('/call_brigade/{id}', [BrigadesController::class, 'callBrigade']);

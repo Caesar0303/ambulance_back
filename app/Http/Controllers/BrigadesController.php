@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BrigadesController extends Controller
 {
+    public function show($id)
+    {
+        $brigade = Brigade::with(['driver', 'feldsher', 'doctor'])->find($id);
+        return response()->json($brigade, 200);
+    }
     public function listBrigade()
     {
         $brigades = Brigade::all();
@@ -44,6 +49,12 @@ class BrigadesController extends Controller
         } else {
             return response()->json(['message' => 'Произошла ошибка'], 500);
         }
+    }
+
+    public function editBrigade($id)
+    {
+        $brigade = Brigade::with(['driver', 'feldsher', 'doctor'])->find($id);
+        return response()->json($brigade, 200);
     }
 
     public function deleteBrigade($id)
