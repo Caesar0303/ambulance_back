@@ -27,9 +27,14 @@ class User extends Authenticatable
         'phone_number',
         'post',
         'user_work_place',
+        'brigade_user',
     ];
 
 
+    public function brigade()
+    {
+        return $this->belongsTo(Brigade::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrigadesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,6 @@ Route::post('/add_brigade', [BrigadesController::class, 'addBrigade']);
 Route::get('/edit_brigade/{id}', [BrigadesController::class, 'editBrigade']);
 Route::post('/update_brigade/{id}', [BrigadesController::class, 'updateBrigade']);
 Route::delete('/delete_brigade/{id}', [BrigadesController::class, 'deleteBrigade']);
+Route::get('/delete_user/{id}', [UserController::class, 'deleteUser']);
 Route::get('/call_brigade/{id}', [BrigadesController::class, 'callBrigade']);
 

@@ -9,6 +9,10 @@ class Brigade extends Model
 {
     protected $fillable = ['board_number', 'first_user', 'second_user', 'third_user', 'brigade_tablet_phone_number'];
 
+    public function brigade()
+    {
+        return $this->belongsTo(User::class, 'brigade_id', 'id');
+    }
     public function driver()
     {
         return $this->belongsTo(User::class, 'first_user', 'id');

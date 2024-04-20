@@ -9,8 +9,20 @@ class UserController extends Controller
 {
     public function listUsers(Request $request)
     {
-        $users = User::all();
+        $users = User::with('brigade')->get();
         return response()->json($users, 200);
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(['message' => 'Бригада не найдена'], 404);
+        }
+
+        $user->delete();
+
+        return response()->json(['message' => 'Бригада удалена успешно'], 200);
     }
     public function addUser(Request $request)
     {

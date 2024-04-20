@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brigade;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BrigadesController extends Controller
@@ -26,6 +27,18 @@ class BrigadesController extends Controller
             'third_user' => $request->third_user,
             'brigade_tablet_phone_number' => $request->brigade_tablet_phone_number,
         ]);
+
+        $firstUser = User::find($request->first_user);
+        $firstUser->brigade_id = $brigade->id;
+        $firstUser->save();
+
+        $secondUser = User::find($request->second_user);
+        $secondUser->brigade_id = $brigade->id;
+        $secondUser->save();
+
+        $thirdUser = User::find($request->third_user);
+        $thirdUser->brigade_id = $brigade->id;
+        $thirdUser->save();
 
         if ($brigade) {
             return response()->json(['message' => 'Бригада добавлена успешно'], 200);
