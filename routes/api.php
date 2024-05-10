@@ -29,5 +29,7 @@ Route::get('/edit_brigade/{id}', [BrigadesController::class, 'editBrigade']);
 Route::post('/update_brigade/{id}', [BrigadesController::class, 'updateBrigade']);
 Route::delete('/delete_brigade/{id}', [BrigadesController::class, 'deleteBrigade']);
 Route::get('/delete_user/{id}', [UserController::class, 'deleteUser']);
+Route::get('/my_brigade/{id}', [UserController::class, 'myBrigade']);
+Route::post('/login', [UserController::class, 'login']);
 Route::get('/call_brigade/{id}', [BrigadesController::class, 'callBrigade']);
 

@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brigade;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function myBrigade($id)
+    {
+        $mybrigade = Brigade::with(['driver', 'feldsher', 'doctor'])->find($id);
+        return response()->json(['myBridage' => $mybrigade]);
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->only('iin', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return response()->json(['success' => true, 'user' => $user]);
+        }
+
+        return response()->json(['success' => false]);
+    }
     public function listUsers(Request $request)
     {
         $users = User::with('brigade')->get();
