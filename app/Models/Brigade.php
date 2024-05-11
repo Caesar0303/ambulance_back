@@ -13,6 +13,11 @@ class Brigade extends Model
     {
         return $this->belongsTo(User::class, 'brigade_id', 'id');
     }
+    public function histories()
+    {
+        return $this->hasMany(AmbulanceHistory::class, 'board_number', 'id');
+    }
+
     public function driver()
     {
         return $this->belongsTo(User::class, 'first_user', 'id');

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class BrigadesController extends Controller
 {
+    public function myHistories($id)
+    {
+        $brigade = Brigade::with('histories')->find($id);
+        return response()->json(['myHistories' => $brigade->histories]);
+    }
     public function show($id)
     {
         $brigade = Brigade::with(['driver', 'feldsher', 'doctor'])->find($id);
