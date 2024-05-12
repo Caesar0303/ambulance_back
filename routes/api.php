@@ -27,10 +27,12 @@ Route::get('/users/list', [\App\Http\Controllers\UserController::class, 'listUse
 Route::post('/add_brigade', [BrigadesController::class, 'addBrigade']);
 Route::get('/edit_brigade/{id}', [BrigadesController::class, 'editBrigade']);
 Route::post('/update_brigade/{id}', [BrigadesController::class, 'updateBrigade']);
-Route::delete('/delete_brigade/{id}', [BrigadesController::class, 'deleteBrigade']);
+Route::post('/updateUser/{id}', [UserController::class, 'updateUser']);
+Route::get('/delete_brigade/{id}', [BrigadesController::class, 'deleteBrigade']);
 Route::get('/delete_user/{id}', [UserController::class, 'deleteUser']);
 Route::get('/my_brigade/{id}', [UserController::class, 'myBrigade']);
 Route::get('/my_histories/{id}', [BrigadesController::class, 'myHistories']);
+Route::get('/editUser/{id}', [UserController::class, 'editUser']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/call_brigade/{id}', [BrigadesController::class, 'callBrigade']);
 
